@@ -1,42 +1,38 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom'
 import axiosInstance from '../axios';
-
+import { useHistory } from 'react-router-dom';
 export default function Login()  {
-     
+    const history = useHistory();
     const initialFormData = Object.freeze({
 		email: '',
 		password: '',
 	});
-
     const [formData, updateFormData] = useState(initialFormData);
-
-
+    const handleChange = (e) => {
+		updateFormData({
+			...formData,
+			[e.target.name]: e.target.value.trim(),
+		});
+	};
     const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(formData);
-
-		// axiosInstance
-		// 	.post(`token/`, {
-		// 		email: formData.email,
-		// 		password: formData.password,
-		// 	})
-		// 	.then((res) => {
-		// 		localStorage.setItem('access_token', res.data.access);
-		// 		localStorage.setItem('refresh_token', res.data.refresh);
-		// 		axiosInstance.defaults.headers['Authorization'] =
-		// 			'JWT ' + localStorage.getItem('access_token');
-		// 		history.push('/');
-		// 		console.log(res);
-		// 		console.log(res.data);
-		// 	});
+		axiosInstance
+			.post(`api/token/`, {
+				email: formData.email,
+				password: formData.password,
+			})
+			.then((res) => {
+				localStorage.setItem('access_token', res.data.access);
+				localStorage.setItem('refresh_token', res.data.refresh);
+				axiosInstance.defaults.headers['Authorization'] =
+					'JWT ' + localStorage.getItem('access_token');
+				history.push('/Dashboard');
+				console.log(res);
+				console.log(res.data);
+			});
 	};
-
-
-
-
-
-
         return (
             <div class="container">
                 <div class="row justify-content-center">
@@ -51,48 +47,25 @@ export default function Login()  {
                                         <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login </h1>
                                         </div>
-
-
-
-
-
                                         {/* *********form************ */}
                                         <form class="user">
-
-
-
-
                                             <div class="form-group">
                                                         <input 
                                                         name="email"
-                                                        id="email"
                                                         type="email" class="form-control form-control-user"
                                                         id="exampleInputEmail" aria-describedby="emailHelp"
-                                                        placeholder="Enter Email Address..."/>
+                                                        placeholder="Enter Email Address..."
+                                                        onChange={handleChange} />
                                             </div>
-
-
-
                                             <div class="form-group">
                                                 <input 
                                                 name="password"
                                                 id="password"
                                                 type="password" class="form-control form-control-user"
-                                                    id="exampleInputPassword" placeholder="Password"/>
-
-
+                                                    id="exampleInputPassword" placeholder="Password"
+                                                    onChange={handleChange} />
                                             </div>
-
-
                                         <div class="form-group">
-                                            {/* <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck"/>
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                        </div> */}
-
-
-
                                         </div>
                                                 <a  class="btn btn-primary btn-user btn-block" onClick={handleSubmit}>
                                                     Login
@@ -100,25 +73,10 @@ export default function Login()  {
 
                                     </form>
  {/* *********endform************ */}
-
  <hr/>
-
-
-                                 
-
-
-
-
                                     <div class="text-center">
                                          <Link to="/register">Create an Account!</Link> 
                                     </div>
-
-                                    
-
-
-
-
-
 {/* ******************************* */}
                                     </div>
                                 </div>
@@ -126,7 +84,6 @@ export default function Login()  {
                             </div>
                         </div>
                     </div>
- 
                 </div>
             </div>
         )
