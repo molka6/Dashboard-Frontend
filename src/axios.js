@@ -15,6 +15,17 @@ const axiosInstance = axios.create({
 });
 
 
+export const axiosInstance1 = axios.get({
+	baseURL: baseURL,
+	headers: {
+		'Content-Type': 'application/json',
+		accept: 'application/json',
+	}, 
+});
+
+
+
+
 axiosInstance.interceptors.response.use(
 	(response) => {
 		return response;
@@ -84,6 +95,10 @@ axiosInstance.interceptors.response.use(
 		return Promise.reject(error);
 	}
 );
+
+
+
+
 
 
 

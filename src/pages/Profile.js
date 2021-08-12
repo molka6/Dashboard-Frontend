@@ -5,23 +5,71 @@ import DashboardFooter from '../component/DashboardFooter' ;
 
 
 
-export default function Dashboard() {      
+export default function Profile() {      
     return (
-
         <div id="wrapper">
-    
            <DashboardSidebar />
-     
-
             <div id="content-wrapper" class="d-flex flex-column">
                 <div id="content">
-    
                 <DashboardNavbar />
     
+
+
+
+
+
+<div>
+    profile
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               
 
                 <DashboardFooter />
-              
+    
                 </div>
             </div>
            
