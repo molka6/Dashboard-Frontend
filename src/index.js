@@ -7,7 +7,7 @@ import Register from './pages/Register' ;
 import Dashboard  from './pages/Dashboard';
 import  Profile from './pages/Profile' ;
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+import UpdateProfile  from './component/UpdateProfile' ;
 
 ReactDOM.render(
   <React.StrictMode>
@@ -31,7 +31,17 @@ ReactDOM.render(
           </Route>
 
 
+          <Route  path="/updateProfile">
+            <UpdateProfile />
+          </Route>
 
+
+          
+       
+
+
+
+         
          
         </Switch>
       

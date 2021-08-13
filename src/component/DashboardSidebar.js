@@ -1,5 +1,8 @@
 
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
+
+
 export default class DashboardSidebar extends Component {
     render(){
         return (
@@ -11,12 +14,49 @@ export default class DashboardSidebar extends Component {
                         </a>
                </div>
                 <hr class="sidebar-divider my-0"/>
+
+
+
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                    <Link to="/dashboard">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard </span> </Link></a>
+                </li>
+
+                
+
+
+                <hr class="sidebar-divider"/>
+
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span></a>
                 </li>
                 <hr class="sidebar-divider"/>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span></a>
+                </li>
+                <hr class="sidebar-divider"/>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span></a>
+                </li>
+                <hr class="sidebar-divider"/>
+
+                
+
+
+{/* 
+
+
                 <div class="sidebar-heading">
                     Interface
                 </div>
@@ -41,7 +81,7 @@ export default class DashboardSidebar extends Component {
     
                 <div class="sidebar-heading">
                     Addons
-                </div>
+                </div> */}
     
     
     
@@ -49,7 +89,7 @@ export default class DashboardSidebar extends Component {
     
     
     
-    
+{/*     
                 <li class="nav-item">
                     <a class="nav-link" href="charts.html">
                         <i class="fas fa-fw fa-chart-area"></i>
@@ -62,7 +102,7 @@ export default class DashboardSidebar extends Component {
                     <a class="nav-link" href="tables.html">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
-                </li>
+                </li> */}
     
     
     

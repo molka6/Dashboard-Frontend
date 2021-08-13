@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:8000/';
+
+
+export const baseURL = 'http://localhost:8000/';
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,
@@ -13,17 +15,6 @@ const axiosInstance = axios.create({
 		accept: 'application/json',
 	}, 
 });
-
-
-export const axiosInstance1 = axios.get({
-	baseURL: baseURL,
-	headers: {
-		'Content-Type': 'application/json',
-		accept: 'application/json',
-	}, 
-});
-
-
 
 
 axiosInstance.interceptors.response.use(

@@ -1,34 +1,35 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import axios from 'axios';
-
-// export default class DashboardNavbar extends Component {
+import axiosInstance from '../axios';
+import Logout from './Logout' ;
 export default function DashboardNavbar()  {
 
-    const url = 'http://localhost:8000/authentification/properties';
-
-    async function fetchData() {
-    axios.get('/bezkoder.com/tutorials')
-    .then(function (response) {
-      console.log(response.data);
-    });
-  
-    const { data } = await axios.get(url);
-    }
 
 
+	const [appState, setAppState] = useState({
+		loading: true,
+		posts: '',
+	});
 
-    
 
+    useEffect(() => {
+      axiosInstance.get('authentification/properties/').then((res) => {
+        const allPosts = res.data;
+        setAppState({ loading: false, posts: allPosts });
+        console.log(res.data);
+        console.log(allPosts)
+        console.log(allPosts.pk)
+      });
+    }, [setAppState]);
 
-        return (
+      return (
 
-           
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-          
-               
+
+
+
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
@@ -36,10 +37,23 @@ export default function DashboardNavbar()  {
                 <ul class="navbar-nav ml-auto">
                     <div class="topbar-divider d-none d-sm-block"></div>
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+
+
+
+                      
+                        <a class="nav-link dropdown-toggle"  id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {appState.posts.first_name } {appState.posts.last_name } </span>
+                            <img class="img-profile rounded-circle"
+                                    src="public/style/img/logo.jpg" />
+                        
                         </a>
+
+
+                       
+
+
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown">
                         
@@ -48,16 +62,17 @@ export default function DashboardNavbar()  {
 
 
 
-                            <a class="dropdown-item" href="#">
+                            <Link class="dropdown-item" to="/updateProfile">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Activity Log
-                            </a>
+                                UpdateProfile
+                                </Link> 
+
+
+                         
+
+
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item"  data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
@@ -68,4 +83,5 @@ export default function DashboardNavbar()  {
 
             </nav>
         )
-    }
+    
+  }
