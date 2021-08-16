@@ -1,16 +1,11 @@
-import React  from 'react';
-export default function DashboardFooter() {      
+import React from "react";
+import "./style.css";
+export default function DashboardFooter() {
     return (
-
-
-                                    <footer class="sticky-footer bg-white">
-                                        <div class="container my-auto">
-                                            <div class="copyright text-center my-auto">
-                                                <span>Copyright &copy; Stage2021</span>
-                                            </div>
-                                        </div>
-                                    </footer>
-              
-    
-    )
-    }
+        <footer class="sticky-footer bg-white">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Stage2021</span>
+            </div>
+        </footer>
+    );
+}
